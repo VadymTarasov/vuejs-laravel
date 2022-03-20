@@ -5,6 +5,8 @@
     <div>
         Name: {{name}}
     </div>
+    <button @click="sayHello">Hello</button>
+    <button @click="sayHi">Hi</button>
 </div>
 </template>
 
@@ -20,6 +22,16 @@ export default {
             name: "vadym",
             age: 30
         }
+    },
+    methods:{
+        sayHello(){
+            console.log("Hello")
+
+        },
+        sayHi(){
+            console.log("Hi")
+        },
+
     },
 
     components: {SinglePostComponent},
