@@ -3,7 +3,7 @@
     blablabla
    <SinglePostComponent></SinglePostComponent>
 <!--    аналог форича-->
-    <div v-for="person in persons">
+    <div >
         <table class="table">
             <thead>
             <tr>
@@ -14,7 +14,7 @@
             </tr>
             </thead>
             <tbody>
-            <tr>
+            <tr v-for="person in personsAge">
                 <th scope="row">{{person.id}}</th>
                 <td>{{person.name}}</td>
                 <td>{{person.age}}</td>
@@ -60,6 +60,13 @@ export default {
                     job: "manager",
 
                 },
+                {
+                    id: 4,
+                    name: "Olya",
+                    age: 32,
+                    job: "travel",
+
+                },
             ]
         }
     },
@@ -77,11 +84,19 @@ export default {
     //Вычисляемые свойства computed во vue js
     //работать с данными после инициализации
     computed:{
+        personsAge(){
+         return this.persons.filter(function (person)
+             {
+                 return person.age>30
+             }
+         )
+        },
+
 vadymJob(){
     return this.name + "php developer"
 }
-
     },
+
 
     components: {SinglePostComponent},
     comments: {
