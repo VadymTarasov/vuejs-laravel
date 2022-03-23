@@ -1,6 +1,6 @@
 <template>
 <div>
-    bla singlepost
+     singlepost
 </div>
 </template>
 
