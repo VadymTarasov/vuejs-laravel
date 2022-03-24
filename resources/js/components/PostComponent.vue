@@ -1,10 +1,9 @@
 <template>
     <div>
-        blablabla
+        <CreateComponent></CreateComponent>
         <SinglePostComponent></SinglePostComponent>
-        <!--    аналог форича-->
         <div >
-            <table class="table">
+<!--            <table class="table">
                 <thead>
                 <tr>
                     <th scope="col">id</th>
@@ -21,43 +20,32 @@
                     <td>{{person.job}}</td>
                 </tr>
                 </tbody>
-            </table>
+            </table>-->
 
         </div>
-<!--        <button @click="sayHello">Hello</button>
-        <button @click="sayHi">Hi</button>-->
     </div>
 </template>
 
 <script>
 import SinglePostComponent from "./SinglePostComponent";
+import CreateComponent from "./CreateComponent";
 export default {
     name: "PostComponent",
-// Создаем переменные
     data() {
         return {
             persons: null
         }
     },
     mounted() {
-        this.getPersons()
     },
 
     methods:{
-       getPersons(){
-           axios.get('/persons')
-           .then(res => {
-               this.persons = res.data
-           })
-       }
     },
-    //Вычисляемые свойства computed во vue js
-    //работать с данными после инициализации
     computed:{
     },
-    components: {SinglePostComponent},
-    comments: {
-        SinglePostComponent
+    components: {
+        SinglePostComponent,
+        CreateComponent
     }
 }
 </script>
