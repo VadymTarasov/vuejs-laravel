@@ -2,6 +2,7 @@
     <div>
         <CreateComponent></CreateComponent>
         <SinglePostComponent></SinglePostComponent>
+        <IndexComponent></IndexComponent>
         <div >
 <!--            <table class="table">
                 <thead>
@@ -29,6 +30,7 @@
 <script>
 import SinglePostComponent from "./SinglePostComponent";
 import CreateComponent from "./CreateComponent";
+import IndexComponent from "./IndexComponent";
 export default {
     name: "PostComponent",
     data() {
@@ -45,7 +47,8 @@ export default {
     },
     components: {
         SinglePostComponent,
-        CreateComponent
+        CreateComponent,
+        IndexComponent
     }
 }
 </script>

@@ -20,5 +20,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::group(['namespace' => 'Person', 'prefix'=>'people'], function (){
     Route::post('/', [\App\Http\Controllers\Person\StoreController::class, '__invoke']);
+    Route::get('/', [\App\Http\Controllers\Person\IndexController::class, '__invoke']);
 
 });
