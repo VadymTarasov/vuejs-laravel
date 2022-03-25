@@ -7,15 +7,26 @@
                 <th scope="col">name</th>
                 <th scope="col">age</th>
                 <th scope="col">job</th>
+                <th scope="col">edit</th>
             </tr>
             </thead>
             <tbody>
-            <tr v-for="person in people">
+            <template v-for="person in people">
+            <tr>
                 <th scope="row">{{person.id}}</th>
                 <td>{{person.name}}</td>
                 <td>{{person.age}}</td>
                 <td>{{person.job}}</td>
-            </tr>
+                <td><a href="#" @click.prevent="changeEditPersonId(person.id)" class="btn btn-success">edit</a> </td>
+                </tr>
+                <tr :class="isEdit(person.id) ? '' : 'd-none' ">
+                    <th scope="row">{{person.id}}</th>
+                    <td><input type="text" class="form-control"></td>
+                    <td><input type="number" class="form-control"></td>
+                    <td><input type="text" class="form-control"></td>
+                    <td><a href="#" @click.prevent="changeEditPersonId(null)" class="btn btn-success">update</a> </td>
+                </tr>
+            </template>
             </tbody>
         </table>
     </div>
@@ -26,7 +37,8 @@ export default {
     name: "IndexComponent",
     data() {
         return {
-            people: null
+            people: null,
+            editPersonId: null
 
         }
     },
@@ -39,6 +51,13 @@ export default {
             .then(res =>{
                 this.people = res.data
             })
+        },
+        changeEditPersonId(id){
+            this.editPersonId =id
+        },
+        isEdit(id){
+            return this.editPersonId === id
+
         }
     }
 }
