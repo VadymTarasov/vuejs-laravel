@@ -21,6 +21,7 @@
 <script>
 
 import SomeComponent from "./SomeComponent";
+
 export default {
     name: "CreateComponent",
     components: {SomeComponent},
@@ -29,27 +30,28 @@ export default {
             name: null,
             age: null,
             job: null,
-            obj:{
-        color: 'black',
-        number: 20,
-        isPublished: true
+            obj: {
+                color: 'black',
+                number: 20,
+                isPublished: true
             }
         }
     },
     methods: {
         addPerson() {
-                         // console.log(this.name, this.age, this.job)
+            // console.log(this.name, this.age, this.job)
             axios.post('/api/people', {name: this.name, age: this.age, job: this.job})
-            .then(res => {
-                this.name = null
+                .then(res => {
+                    this.name = null
                     this.age = null
                     this.job = null
-                console.log(res);
-            })
+                    this.$parent.$refs.index.getPeople()
+                    // console.log(res);
+                })
 
         }
     },
-    comments:{
+    comments: {
         SomeComponent
     }
 }

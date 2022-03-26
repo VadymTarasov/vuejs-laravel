@@ -13,21 +13,8 @@
             </thead>
             <tbody>
             <template v-for="person in people">
-            <tr :class="isEdit(person.id) ? 'd-none' : '' ">
-                <th scope="row">{{person.id}}</th>
-                <td>{{person.name}}</td>
-                <td>{{person.age}}</td>
-                <td>{{person.job}}</td>
-                <td><a href="#" @click.prevent="changeEditPersonId(person.id, person.name, person.age, person.job)" class="btn btn-success">edit</a> </td>
-                <td><a href="#" @click.prevent="deletePerson(person.id)" class="btn btn-danger">delete</a></td>
-                </tr>
-                <tr :class="isEdit(person.id) ? '' : 'd-none' ">
-                    <th scope="row">{{person.id}}</th>
-                    <td><input type="text" v-model="name" class="form-control"></td>
-                    <td><input type="number" v-model="age" class="form-control"></td>
-                    <td><input type="text" v-model="job" class="form-control"></td>
-                    <td><a href="#" @click.prevent="updatePerson(person.id)" class="btn btn-success">update</a> </td>
-                </tr>
+                <ShowComponent :person="person" :ref="`show_${person.id}`"></ShowComponent>
+                <EditComponent :person="person" :ref="`edit_${person.id}`"></EditComponent>
             </template>
             </tbody>
         </table>
@@ -35,8 +22,15 @@
 </template>
 
 <script>
+import ShowComponent from "./ShowComponent";
+import EditComponent from "./EditComponent";
+
 export default {
     name: "IndexComponent",
+    components: {
+        EditComponent,
+        ShowComponent
+    },
     data() {
         return {
             people: null,
@@ -51,40 +45,42 @@ export default {
         this.getPeople()
     },
     methods: {
-        getPeople(){
+        getPeople() {
             axios.get('/api/people')
-            .then(res =>{
-                this.people = res.data
-            })
+                .then(res => {
+                    this.people = res.data
+                })
         },
-        updatePerson(id){
+        updatePerson(id) {
             this.editPersonId = null
             axios.patch(`/api/people/${id}`, {name: this.name, age: this.age, job: this.job})
-                    .then(res =>{
-                        this.getPeople()
-                        // console.log(res);
-                        // this.people = res.data
-                    })
-            },
-        deletePerson(id){
+                .then(res => {
+                    this.getPeople()
+                    // console.log(res);
+                    // this.people = res.data
+                })
+        },
+        deletePerson(id) {
             axios.delete(`/api/people/${id}`)
-                .then(res =>{
+                .then(res => {
                     this.getPeople()
 
                 })
         },
-        changeEditPersonId(id, name, age, job){
-            this.editPersonId =id
-            this.name = name
-            this.age = age
-            this.job = job
+        changeEditPersonId(id, name, age, job) {
+            this.editPersonId = id
+            let editName = `edit_${id}`
+            let fullEditName = this.$refs[editName][0];
+            fullEditName.name = name
+            fullEditName.age = age
+            fullEditName.job = job
 
         },
-        isEdit(id){
+        isEdit(id) {
             return this.editPersonId === id
 
         },
-        indexLog(){
+        indexLog() {
             console.log('this is index component');
         }
     }
