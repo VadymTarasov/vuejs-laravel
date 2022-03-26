@@ -2,7 +2,7 @@
     <div>
         <CreateComponent></CreateComponent>
         <SinglePostComponent></SinglePostComponent>
-        <IndexComponent></IndexComponent>
+        <IndexComponent ref="index"></IndexComponent>
         <div >
 <!--            <table class="table">
                 <thead>
@@ -39,9 +39,14 @@ export default {
         }
     },
     mounted() {
+        console.log(this.$refs.index.indexLog());
     },
 
+
     methods:{
+        parentLog(){
+            console.log('this is parent');
+        }
     },
     computed:{
     },

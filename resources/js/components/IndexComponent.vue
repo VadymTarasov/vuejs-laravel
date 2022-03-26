@@ -70,8 +70,7 @@ export default {
             axios.delete(`/api/people/${id}`)
                 .then(res =>{
                     this.getPeople()
-                    // console.log(res);
-                    // this.people = res.data
+
                 })
         },
         changeEditPersonId(id, name, age, job){
@@ -84,6 +83,9 @@ export default {
         isEdit(id){
             return this.editPersonId === id
 
+        },
+        indexLog(){
+            console.log('this is index component');
         }
     }
 }

@@ -13,13 +13,17 @@
             <div class="mb-3">
                 <input @click.prevent="addPerson" class="btn btn-primary" value="add">
             </div>
+            <SomeComponent></SomeComponent>
         </form>
     </div>
 </template>
 
 <script>
+
+import SomeComponent from "./SomeComponent";
 export default {
     name: "CreateComponent",
+    components: {SomeComponent},
     data() {
         return {
             name: null,
@@ -39,6 +43,9 @@ export default {
             })
 
         }
+    },
+    comments:{
+        SomeComponent
     }
 }
 
