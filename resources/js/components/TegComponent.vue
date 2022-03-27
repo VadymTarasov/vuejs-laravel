@@ -1,12 +1,12 @@
 <template>
 <div>
-     singlepost
+    this is teg component
 </div>
 </template>
 
 <script>
 export default {
-    name: "SinglePostComponent.vue"
+    name: "TegComponent"
 }
 </script>
 

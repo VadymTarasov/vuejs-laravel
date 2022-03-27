@@ -22,4 +22,4 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 //Route::get('/persons', [App\Http\Controllers\PersonController::class, '__invoke']);
 
-//Route::get('/posts', 'PostController');
+Route::get('/{page}', \App\Http\Controllers\IndexController::class, '__invoke')->where('page','.*');
