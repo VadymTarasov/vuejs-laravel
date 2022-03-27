@@ -9,7 +9,6 @@ const app = new Vue({
 
     components: {
         Index
-
     },
 
     router
