@@ -1,12 +1,14 @@
 <template>
-<div>
-    post component
-</div>
+
+    <div>
+        edit
+    </div>
+
 </template>
 
 <script>
 export default {
-    name: "PostComponent"
+    name: "Edit"
 }
 </script>
 

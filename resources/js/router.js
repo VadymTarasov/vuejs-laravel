@@ -1,7 +1,6 @@
 import Vue from 'vue'
 import VueRouter from "vue-router";
-import PostComponent from "./components/PostComponent";
-import TegComponent from "./components/TegComponent";
+
 
 Vue.use(VueRouter)
 
@@ -10,13 +9,13 @@ export default new VueRouter({
 
     routes: [
         {
-            path: '/posts',
-            component: PostComponent
+            path: '/people', component: () => import('./components/Person/Index'),
+            name: 'person.index'
         },
         {
-            path: '/tags',
-            component: TegComponent
-        },
+            path: '/people/create', component: () => import('./components/Person/Create'),
+            name: 'person.create'
+        }
 
     ]
 })

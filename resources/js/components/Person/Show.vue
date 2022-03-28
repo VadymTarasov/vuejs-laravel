@@ -1,12 +1,14 @@
 <template>
-<div>
-    this is teg component
-</div>
+
+    <div>
+        show
+    </div>
+
 </template>
 
 <script>
 export default {
-    name: "TegComponent"
+    name: "Show"
 }
 </script>
 
